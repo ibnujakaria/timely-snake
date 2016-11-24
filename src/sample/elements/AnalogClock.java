@@ -104,11 +104,6 @@ public class AnalogClock extends Group {
                 rotasiJarumJam.setAngle(getSudutJam());
                 rotasiJarumMenit.setAngle(getSudutMenit());
                 rotasiJarumDetik.setAngle(getSudutDetik());
-
-//                Date dateobj = new Date();
-//                String currentTime = getCurrentTime();
-//                primaryStage.setTitle(currentTime);
-//                jamDigital.setText(currentTime);
             }
         }));
 

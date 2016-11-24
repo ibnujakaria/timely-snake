@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
 import sample.elements.AnalogClock;
+import sample.elements.DigitalClock;
 import sample.menus.MyMenuBar;
 
 import java.text.DateFormat;
@@ -25,10 +26,9 @@ import java.util.Date;
 
 public class Main extends Application {
 
-    public static Label kota, jamDigital;
-    private DateFormat df;
+    public static Label kota;
     private SnakeController snakeController;
-    private Group root, analogClock;
+    private Group root, analogClock, digitalClock;
     private Scene scene;
 
     @Override
@@ -36,7 +36,6 @@ public class Main extends Application {
     {
         root = new Group();
         scene = new Scene(root, 580, 280, Color.web("#674172"));
-        df = new SimpleDateFormat("HH:mm:ss");
 
         analogClock = new AnalogClock(scene);
         root.getChildren().add(analogClock);
@@ -48,15 +47,10 @@ public class Main extends Application {
         kota.setLayoutX(330);
         kota.setLayoutY(80);
 
-
-        jamDigital = new Label(df.format(new Date()));
-        jamDigital.setFont(new Font("Arial", 30));
-        jamDigital.setTextFill(Color.web("#EEEEEE"));
-        jamDigital.setLayoutX(330);
-        jamDigital.setLayoutY(140);
-
         root.getChildren().add(kota);
-        root.getChildren().add(jamDigital);
+
+        digitalClock = new DigitalClock();
+        root.getChildren().add(digitalClock);
 
         root.getChildren().add(snakeController.getSnake());
         root.getChildren().add(snakeController.getFoodGroup());
@@ -75,21 +69,5 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
-    }
-
-    public String getCurrentTime() {
-        if (snakeController.getSnake().getLength() > 5) {
-            int jam = LocalTime.now().getHour() + snakeController.getSnake().getLength() - 5;
-            int menit = LocalTime.now().getMinute();
-            int detik = LocalTime.now().getSecond();
-
-            String jamStr = jam < 10 ? "0" + jam : jam + "";
-            String menitStr = menit < 10 ? "0" + menit : menit + "";
-            String detikStr = detik < 10 ? "0" + detik : detik + "";
-
-            return jamStr + ":" + menit + ":" + detik;
-        }
-
-        return df.format(new Date());
     }
 }
