@@ -1,4 +1,4 @@
-package sample;
+package sample.elements.snake;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -6,12 +6,12 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
+import sample.Main;
 
 import java.util.Random;
 

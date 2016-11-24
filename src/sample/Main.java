@@ -1,28 +1,16 @@
 package sample;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
-import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
-import javafx.util.Duration;
 import sample.elements.AnalogClock;
 import sample.elements.DigitalClock;
+import sample.elements.snake.SnakeController;
 import sample.menus.MyMenuBar;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalTime;
-import java.util.Date;
 
 public class Main extends Application {
 

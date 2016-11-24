@@ -1,8 +1,7 @@
-package sample;
+package sample.elements.snake;
 
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.paint.Color;
 
 /**
  * Created by ibnujakaria on 17/11/16.
