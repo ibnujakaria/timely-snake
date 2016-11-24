@@ -24,7 +24,7 @@ public class Snake extends Group {
     private void prepareSnakes() {
         for (int i = 0; i < length; i++) {
             double x = scene.getWidth()/2 + (i * step) / 10 * 10;
-            double y = scene.getHeight()/2 / 10 * 10;
+            double y = scene.getHeight()/2 / 10 * 10 + 30;
             atoms[i] = new Atom(x, y);
 
             if (i == 0) {

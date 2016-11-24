@@ -48,7 +48,7 @@ public class SnakeController {
 
     private void randomFood () {
         food.setCenterX(rand.nextInt((int) scene.getWidth()) / 10 * 10);
-        food.setCenterY(rand.nextInt((int) scene.getHeight()) / 10 * 10);
+        food.setCenterY(rand.nextInt((int) scene.getHeight()) / 10 * 10 + 15);
     }
 
     private void addListeners () {

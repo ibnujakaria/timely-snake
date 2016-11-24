@@ -30,12 +30,11 @@ public class AnalogClock extends Group {
     public static double panjangSceneLingkaran = 300;
     public static double tinggiSceneLingkaran = 275;
     public static double xTengah = panjangSceneLingkaran / 2;
-    public static double yTengah = tinggiSceneLingkaran / 2;
+    public static double yTengah = tinggiSceneLingkaran / 2 ;
 
     public AnalogClock (Scene scene)
     {
         this.scene = scene;
-
         this.initiatesUi();
         this.attachUiElements();
         this.updateClock();

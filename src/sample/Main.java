@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Box;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
@@ -16,18 +17,36 @@ public class Main extends Application {
 
     public static Label kota;
     private SnakeController snakeController;
-    private Group root, analogClock, digitalClock;
+    private Group root, menuBarGroup, bodyGroup, analogClock, digitalClock;
     private Scene scene;
 
     @Override
     public void start(Stage primaryStage) throws Exception
     {
         root = new Group();
-        scene = new Scene(root, 580, 280, Color.web("#674172"));
+        scene = new Scene(root, 580, 310, Color.web("#674172"));
 
+        this.prepareMenuBarGroup();
+        this.prepareBodyGroup();
+        this.prepareRootGroup();
+
+        primaryStage.setTitle("Hello World");
+        primaryStage.setResizable(false);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    private void prepareRootGroup()
+    {
+        root.getChildren().addAll(menuBarGroup, bodyGroup);
+    }
+
+    private void prepareBodyGroup()
+    {
+        bodyGroup = new Group();
         analogClock = new AnalogClock(scene);
-        root.getChildren().add(analogClock);
         snakeController = new SnakeController(scene, 5);
+        digitalClock = new DigitalClock();
 
         kota = new Label("Bangkalan");
         kota.setFont(new Font("Arial", 40));
@@ -35,24 +54,19 @@ public class Main extends Application {
         kota.setLayoutX(330);
         kota.setLayoutY(80);
 
-        root.getChildren().add(kota);
+        bodyGroup.getChildren().addAll(
+                analogClock, digitalClock,
+                snakeController.getSnake(), snakeController.getFoodGroup(),
+                kota
+        );
 
-        digitalClock = new DigitalClock();
-        root.getChildren().add(digitalClock);
-
-        root.getChildren().add(snakeController.getSnake());
-        root.getChildren().add(snakeController.getFoodGroup());
-
-        addMenuBar();
-
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        bodyGroup.setLayoutY(30);
     }
 
-    private void addMenuBar ()
+    private void prepareMenuBarGroup()
     {
-        root.getChildren().add(new MyMenuBar(scene));
+        menuBarGroup = new Group();
+        menuBarGroup.getChildren().add(new MyMenuBar(scene));
     }
 
     public static void main(String[] args) {
