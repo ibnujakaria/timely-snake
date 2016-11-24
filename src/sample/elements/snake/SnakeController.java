@@ -134,4 +134,17 @@ public class SnakeController {
         }
         return false;
     }
+
+    public void toggle() {
+        this.getSnake().setVisible(!this.getSnake().isVisible());
+        this.getFoodGroup().setVisible(!this.getFoodGroup().isVisible());
+    }
+
+    public void pause() {
+        timeline.pause();
+    }
+
+    public void play() {
+        timeline.play();
+    }
 }

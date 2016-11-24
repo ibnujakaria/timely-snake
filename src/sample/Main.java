@@ -54,6 +54,9 @@ public class Main extends Application {
         kota.setLayoutX(330);
         kota.setLayoutY(80);
 
+        // set ular agar non aktif
+        this.toggleSnake();
+
         bodyGroup.getChildren().addAll(
                 analogClock, digitalClock,
                 snakeController.getSnake(), snakeController.getFoodGroup(),
@@ -66,10 +69,26 @@ public class Main extends Application {
     private void prepareMenuBarGroup()
     {
         menuBarGroup = new Group();
-        menuBarGroup.getChildren().add(new MyMenuBar(scene));
+        menuBarGroup.getChildren().add(new MyMenuBar(this));
     }
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public void toggleSnake()
+    {
+        this.snakeController.toggle();
+
+        if (!this.snakeController.getSnake().isVisible()) {
+            this.snakeController.pause();
+        } else {
+            this.snakeController.play();
+        }
+    }
+
+    public Scene getScene()
+    {
+        return scene;
     }
 }

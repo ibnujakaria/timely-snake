@@ -2,24 +2,42 @@ package sample.menus.mode;
 
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
+import sample.menus.MyMenuBar;
 
 /**
  * Created by ibnujakaria on 11/24/16.
  */
 public class Mode extends Menu {
 
-    public Mode ()
+    private MyMenuBar menuBar;
+    private MenuItem snakeItem, digitalItem, analogItem;
+
+    public Mode (MyMenuBar menuBar)
     {
         super ("Mode");
 
-        addItems();
+        this.menuBar = menuBar;
+        this.addItems();
+        this.addListeners();
+    }
+
+    private void addListeners()
+    {
+        this.snakeItem.setOnAction(event -> {
+            this.onSnakeItemClick();
+        });
+    }
+
+    private void onSnakeItemClick()
+    {
+        this.menuBar.getMain().toggleSnake();
     }
 
     private void addItems ()
     {
-        MenuItem snakeItem = new MenuItem("Snakely");
-        MenuItem digitalItem = new MenuItem("Digital");
-        MenuItem analogItem = new MenuItem("Analog");
+        snakeItem = new MenuItem("Snakely");
+        digitalItem = new MenuItem("Digital");
+        analogItem = new MenuItem("Analog");
 
         this.getItems().addAll(snakeItem, digitalItem, analogItem);
     }
