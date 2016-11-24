@@ -96,8 +96,6 @@ public class SnakeController {
                     randomFood();
                     snake.eat();
                     Main.kota.setText("Ayo!");
-//                    String rgb = "rgb(" + (rand.nextInt(100) + 155) + ", " + (rand.nextInt(100) + 155) + ", " + (rand.nextInt(100) + 155) + " )";
-//                    scene.setFill(Color.web(rgb));
                 }
 
                 cekMati();

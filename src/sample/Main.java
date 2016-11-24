@@ -15,6 +15,7 @@ import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
+import sample.menus.MyMenuBar;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -29,12 +30,15 @@ public class Main extends Application {
     public static double yTengah = tinggiSceneLingkaran / 2;
     public static Label kota, jamDigital;
     private DateFormat df;
-    SnakeController snakeController;
+    private SnakeController snakeController;
+    private Group root;
+    private Scene scene;
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
-        Group root = new Group();
-        Scene scene = new Scene(root, 580, 280, Color.web("#674172"));
+    public void start(Stage primaryStage) throws Exception
+    {
+        root = new Group();
+        scene = new Scene(root, 580, 280, Color.web("#674172"));
         df = new SimpleDateFormat("HH:mm:ss");
         Circle clock = new Circle(xTengah, yTengah, 120, Color.web("#BE90D4"));
 
@@ -105,14 +109,20 @@ public class Main extends Application {
         root.getChildren().add(snakeController.getSnake());
         root.getChildren().add(snakeController.getFoodGroup());
 
-        BigBuble buble = new BigBuble(scene);
-        root.getChildren().add(buble);
+        addMenuBar();
+
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
-    private void tambahnoNggoneJam(Group root, Scene scene, Circle circle) {
+    private void addMenuBar ()
+    {
+        root.getChildren().add(new MyMenuBar(scene));
+    }
+
+    private void tambahnoNggoneJam(Group root, Scene scene, Circle circle)
+    {
         for (int i = 0; i < 12; i++) {
             Line line = new Line(
                     xTengah, tinggiSceneLingkaran - circle.getRadius() * 2 - 10,
@@ -160,7 +170,6 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
 
     public String getCurrentTime() {
         if (snakeController.getSnake().getLength() > 5) {
