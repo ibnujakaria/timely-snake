@@ -4,6 +4,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
+import sample.menus.alarm.Alarm;
 import sample.menus.mode.Mode;
 
 /**
@@ -12,7 +13,7 @@ import sample.menus.mode.Mode;
 public class MyMenuBar extends MenuBar {
 
     private Scene scene;
-    private Mode modeMenu;
+    private Menu modeMenu, alarmMenu;
 
     public MyMenuBar (Scene scene)
     {
@@ -26,7 +27,8 @@ public class MyMenuBar extends MenuBar {
     private void prepareMenu()
     {
         modeMenu = new Mode();
+        alarmMenu = new Alarm();
 
-        getMenus().addAll(modeMenu);
+        getMenus().addAll(modeMenu, alarmMenu);
     }
 }
